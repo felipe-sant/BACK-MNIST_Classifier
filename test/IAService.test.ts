@@ -2,6 +2,9 @@ import { IAService } from '../src/services/IA.service'
 import FormData from 'form-data'
 import fs from 'fs'
 
+/**
+ * Testes de funções
+ */
 describe('IAService', () => {
     const iaService = new IAService()
 
