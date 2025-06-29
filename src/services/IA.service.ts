@@ -2,7 +2,7 @@ import axios from "axios";
 import FormData from 'form-data'
 
 export class IAService {
-    private readonly baseUrl: string = "http://localhost:8000/"; // Ajustar conforme necessário
+    private readonly baseUrl: string = "https://ai-mnistclassifier.up.railway.app/";
 
     /**
      * Conexão com a IA, analisa uma imagem e retorna o possivel número desenhado nela.
@@ -19,8 +19,8 @@ export class IAService {
     /**
      * @returns Teste de conexão com a IA
      */
-    async testConnection(): Promise<string> {
-        const response = await axios.get<string>(this.baseUrl)
+    async testConnection(): Promise<{ message: string }> {
+        const response = await axios.get<{ message: string}>(this.baseUrl)
         return response.data
     }
 }

@@ -10,7 +10,7 @@ describe('IAService', () => {
 
     it('Testando conexão com a IA', async () => {
         const result = await iaService.testConnection();
-        expect(result).toBe('IAService is working!');
+        expect(result.message).toBe('IAService is working!');
     });
 
     it("Testando predict da imagem", async () => {
