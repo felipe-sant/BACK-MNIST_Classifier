@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ExampleService } from '../services/example.service';
+import { ExampleService } from '../services/IA.service';
 
 class ExampleController {
     private exampleService: ExampleService;
