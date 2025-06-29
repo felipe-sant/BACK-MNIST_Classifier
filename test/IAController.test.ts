@@ -12,7 +12,7 @@ describe("Testando rotas http://0.0.0.0:0000/ia", () => {
     })
 
     it("POST '/predict' - deve retornar 200", async () => {
-        const res = await request(app).post("/ia/predict").attach("image", path.resolve(__dirname, "./imgs/numero.png"))
+        const res = await request(app).post("/ia/predict").attach("file", path.resolve(__dirname, "./imgs/numero.png"))
         expect(res.status).toBe(200)
     })
 })

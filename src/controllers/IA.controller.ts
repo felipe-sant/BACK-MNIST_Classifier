@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 import { IAService } from "../services/IA.service";
 import MulterRequest from "../interfaces/MulterRequest.interface";
+import FormData from 'form-data';
 
 class IAController {
     private iaService: IAService;
-
+    
     constructor() {
         this.iaService = new IAService();
     }
@@ -22,11 +23,16 @@ class IAController {
                 return
             }
 
-            res.status(200).json({
-                fileName: file.originalname,
-                // mimetype: file.mimetype,
-                // size: file.size
+            const form = new FormData()
+            form.append('file', file.buffer, {
+                filename: file.originalname,
+                contentType: file.mimetype,
+                knownLength: file.size
             })
+
+            const predict = await this.iaService.predict(form)
+
+            res.status(200).json(predict)
         } catch (error: any) {
             res.status(500).json({ message: error.message });
         }
